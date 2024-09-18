@@ -1,0 +1,11 @@
+---
+- name: Run deletependingusertimelimit.py script on localhost
+  hosts: localhost
+  become: false  # Not necessarily needed for Python scripts (optional)
+  tasks:
+    - name: Execute deletependingusertimelimit.py
+      script: deletependingusertimelimit.py  # Replace with the path to your script
+      register: script_result
+
+    - debug:
+        msg: "Script output: {{ script_result.stdout_lines }}"
