@@ -21,11 +21,10 @@ loginapi = os.environ["TG_API"]
 
 loginoutput = subprocess.check_output('python3 ./tgcli.py auth login -t ' + logintenat + ' -a ' + loginapi, shell=True)
 session = loginoutput.decode("utf-8").split(":")[1].strip()
-print(f"Session created: {session}")
-
+#print(f"Session created: {session}")
 
 datainputjson = ["python3", "./tgcli.py", "-s", session, "user", "list"]
-subprocess.call(datainputjson)
+subprocess.call(datainputjson, stdout=subprocess.DEVNULL)
 output = subprocess.check_output(datainputjson, encoding='UTF-8')
 
 json_data = json.loads(output)
@@ -72,7 +71,7 @@ for element in json_data:
       if state == "PENDING":
         print("DELETE Account pending to long")
         print(f"createdAt: {createdat} {id} {email} {state}")
-        time.sleep(10)
+        #time.sleep(10)
         removeuser = ["python3", "./tgcli.py", "-s", session, "user", "delete", "-i", id]
         subprocess.call(removeuser)
         print(removeuser)
