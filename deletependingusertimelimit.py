@@ -23,19 +23,6 @@ loginoutput = subprocess.check_output('python3 ./tgcli.py auth login -t ' + logi
 session = loginoutput.decode("utf-8").split(":")[1].strip()
 print(f"Session created: {session}")
 
-#datainput = ["python3", "./tgcli.py", "-s", session, "-f", "csv", "account", "list"]
-#datainput = ["python3", "./tgcli.py", "-s", session, "-f", "csv", "user", "list"]
-
-
-#datainput = ["python3", "./tgcli.py", "-s", session, "-f", "csv", "user", "list"]
-#print(datainput)
-#data = subprocess.check_output(datainput, encoding='UTF-8')
-#lines = data.splitlines()
-#header = lines[0]
-#lines = lines[1:-1]
-##print(header)
-#data = "\n".join(lines)
-
 
 datainputjson = ["python3", "./tgcli.py", "-s", session, "user", "list"]
 subprocess.call(datainputjson)
@@ -86,7 +73,6 @@ for element in json_data:
         print("DELETE Account pending to long")
         print(f"createdAt: {createdat} {id} {email} {state}")
         time.sleep(10)
-
         removeuser = ["python3", "./tgcli.py", "-s", session, "user", "delete", "-i", id]
         subprocess.call(removeuser)
         print(removeuser)
