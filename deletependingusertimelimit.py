@@ -66,8 +66,7 @@ for element in json_data:
 
     if check_timestamp(timestamp):
       # Run your task here
-      #print("Timestamp is over 24 hours old. Running task...")
-      print("Timestamp is over 30 days old. Running task...")
+      #print("Timestamp is over 30 days old. Running task...")
       if state == "PENDING":
         print("DELETE Account pending to long")
         print(f"createdAt: {createdat} {id} {email} {state}")
